@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A newsletter semanal de investimentos criada por estudantes."
+    />
+    <title>Market Brief | Newsletter de investimentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Market Brief, início">
+        <span class="brand-mark">↗</span>
+        <span>Market Brief</span>
+      </a>
+      <a class="header-link" href="#cadastro">Assinar agora <span>→</span></a>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> FINANÇAS SEM COMPLICAÇÃO</p>
+          <h1>Receba os principais destaques do <em>mercado financeiro</em> toda semana.</h1>
+          <p class="hero-text">
+            Uma curadoria feita por estudantes apaixonados por investimentos para você economizar tempo e ficar bem informado.
+          </p>
+          <a class="button button-primary" href="#cadastro">Assinar Newsletter <span>→</span></a>
+          <div class="social-proof">
+            <div class="avatars" aria-hidden="true"><i>G</i><i>M</i><i>A</i></div>
+            <p>Feita para quem quer investir melhor,<br /><strong>sem perder horas acompanhando notícias.</strong></p>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Ilustração de crescimento financeiro">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="chart-card card-main">
+            <div class="card-top"><span>SEU RESUMO SEMANAL</span><b>• AO VIVO</b></div>
+            <strong>Mercado em foco</strong>
+            <div class="graph" aria-hidden="true"><svg viewBox="0 0 330 115" preserveAspectRatio="none"><path d="M0 104 C35 94 42 73 70 80 S100 98 124 62 S164 77 185 46 S222 59 245 25 S282 44 330 6" fill="none" stroke="currentColor" stroke-width="4"/><path d="M0 104 C35 94 42 73 70 80 S100 98 124 62 S164 77 185 46 S222 59 245 25 S282 44 330 6 V115 H0Z" fill="url(#fade)"/><defs><linearGradient id="fade" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#00d084" stop-opacity=".33"/><stop offset="1" stop-color="#00d084" stop-opacity="0"/></linearGradient></defs></svg></div>
+            <div class="card-footer"><span>IBOVESPA</span><strong>+1,82%</strong></div>
+          </div>
+          <div class="mini-card"><span class="mini-icon">✦</span><div><small>conteúdo direto</small><b>em poucos minutos</b></div></div>
+          <div class="ticker"><span>NASDAQ</span><b>+0,76%</b><span>DÓLAR</span><b>R$ 5,12</b><span>IFIX</span><b>+0,48%</b></div>
+        </div>
+      </section>
+
+      <section class="benefits section-wrap">
+        <div class="section-heading"><p class="eyebrow"><span></span> POR QUE ASSINAR</p><h2>O essencial para você<br />tomar decisões melhores.</h2></div>
+        <div class="benefit-grid">
+          <article class="benefit-card"><div class="icon-box icon-chart">↗</div><h3>Principais movimentações<br />da semana</h3><p>O que realmente movimentou os mercados, sem ruído e sem enrolação.</p></article>
+          <article class="benefit-card featured"><div class="icon-box icon-world">◎</div><h3>Cenário econômico nacional e internacional</h3><p>Uma visão clara dos fatos que impactam seu bolso e seus investimentos.</p></article>
+          <article class="benefit-card"><div class="icon-box icon-bulb">✦</div><h3>Insights rápidos e relevantes para investidores</h3><p>Ideias e explicações para ampliar seu repertório financeiro.</p></article>
+        </div>
+      </section>
+
+      <section class="signup-section" id="cadastro">
+        <div class="signup-copy"><p class="eyebrow"><span></span> É GRATUITO</p><h2>Seu próximo hábito<br />financeiro começa aqui.</h2><p>Junte-se a uma comunidade que aprende a investir com mais clareza, toda semana.</p><div class="small-dots" aria-hidden="true">● ● ● ● ●</div></div>
+        <form class="signup-form" id="signup-form" novalidate>
+          <h3>Assine a newsletter</h3><p>Leva menos de um minuto.</p>
+          <div class="form-row"><label>Nome<input type="text" name="first_name" autocomplete="given-name" required placeholder="Seu nome" /></label><label>Sobrenome<input type="text" name="last_name" autocomplete="family-name" required placeholder="Seu sobrenome" /></label></div>
+          <label>E-mail<input type="email" name="email" autocomplete="email" required placeholder="voce@email.com" /></label>
+          <button class="button button-primary" type="submit">Quero receber <span>→</span></button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          <small>Ao se cadastrar, você concorda em receber nossa newsletter semanal. Sem spam.</small>
+        </form>
+      </section>
+
+      <section class="how-it-works section-wrap"><div class="section-heading"><p class="eyebrow"><span></span> SIMPLES ASSIM</p><h2>Informação de qualidade,<br />direto na sua caixa de entrada.</h2></div><div class="steps"><article><span>01</span><h3>Cadastre seu e-mail</h3><p>Preencha o formulário em poucos segundos.</p></article><article><span>02</span><h3>Receba semanalmente</h3><p>Todo o contexto que importa, no momento certo.</p></article><article><span>03</span><h3>Fique atualizado</h3><p>Entenda o mercado em poucos minutos.</p></article></div></section>
+    </main>
+    <footer><a class="brand" href="#inicio"><span class="brand-mark">↗</span><span>Market Brief</span></a><p>© 2026 Market Brief. Feito por estudantes, para investidores.</p><div class="footer-links"><a href="#" aria-label="Instagram">Instagram</a><a href="#" aria-label="LinkedIn">LinkedIn</a></div></footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
