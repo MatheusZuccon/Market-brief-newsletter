@@ -1,0 +1,27 @@
+<svg width="1000" height="500" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-arrow" x1="110" y1="390" x2="330" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#073C77"/>
+      <stop offset="0.58" stop-color="#00C176"/>
+      <stop offset="1" stop-color="#39E982"/>
+    </linearGradient>
+    <linearGradient id="logo-bars" x1="0" y1="390" x2="0" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D5E7A"/>
+      <stop offset="1" stop-color="#1EBE79"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(24 72)">
+    <path d="M24 322H70V258H24V322ZM88 322H134V218H88V322ZM152 322H198V169H152V322Z" fill="url(#logo-bars)"/>
+    <path d="M47 240V338M111 192V338M175 141V338" stroke="#5BE2AB" stroke-width="9" stroke-linecap="round"/>
+    <path d="M20 278L92 226L132 252L242 112M180 112H242V174" stroke="url(#logo-arrow)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M362 100V372" stroke="#A9BBC3" stroke-width="5"/>
+  <g fill="#062549" font-family="Arial, Helvetica, sans-serif" font-weight="800">
+    <text x="390" y="205" font-size="118" letter-spacing="-4">MARKET</text>
+    <text x="390" y="320" font-size="118" letter-spacing="-4">BRIEF</text>
+  </g>
+  <g fill="#244A6D" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="25" letter-spacing="14">
+    <text x="190" y="426">SEU RESUMO DIÁRIO DO MERCADO</text>
+  </g>
+  <path d="M24 420H112M834 420H922" stroke="#A9BBC3" stroke-width="5"/>
+</svg>

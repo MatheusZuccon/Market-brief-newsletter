@@ -18,11 +18,15 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#inicio" aria-label="Market Brief, início">
-        <span class="brand-mark">↗</span>
-        <span>Market Brief</span>
+      <a class="brand site-brand" href="#inicio" aria-label="Market Brief, início">
+        <img class="brand-mark" src="{{ url_for('static', filename='img/market-brief-icon.svg') }}" alt="" />
+        <span>Market Brief <small>| Seu resumo diário do mercado</small></span>
       </a>
-      <a class="header-link" href="#cadastro">Assinar agora <span>→</span></a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="#sobre">Sobre nós</a>
+        <a href="https://www.instagram.com/marketbriefbrasil?stkn=MXhycXhucHJoZXMwdA%3D%3D" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="header-link" href="#cadastro">Assinar agora <span>→</span></a>
+      </nav>
     </header>
 
     <main id="inicio">
@@ -52,6 +56,21 @@
         </div>
       </section>
 
+      <section class="about-section section-wrap" id="sobre">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> QUEM SOMOS</p>
+          <h2>Investir fica mais simples quando a gente aprende junto.</h2>
+        </div>
+        <div class="about-intro">
+          <p>Somos um grupo de jovens estudantes que acredita que informação de qualidade pode abrir portas. Reunimos as principais notícias do mercado para ajudar outros estudantes a dar os primeiros passos nos investimentos com mais segurança e clareza.</p>
+          <div class="about-values">
+            <article><span>01</span><h3>Missão</h3><p>Democratizar o acesso à informação financeira e tornar o primeiro investimento menos intimidador.</p></article>
+            <article><span>02</span><h3>Visão</h3><p>Construir uma comunidade de estudantes mais preparada para tomar decisões sobre o próprio futuro.</p></article>
+            <article><span>03</span><h3>Valores</h3><p>Clareza, responsabilidade, curiosidade e colaboração em cada conteúdo que compartilhamos.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section class="benefits section-wrap">
         <div class="section-heading"><p class="eyebrow"><span></span> POR QUE ASSINAR</p><h2>O essencial para você<br />tomar decisões melhores.</h2></div>
         <div class="benefit-grid">
@@ -75,7 +94,7 @@
 
       <section class="how-it-works section-wrap"><div class="section-heading"><p class="eyebrow"><span></span> SIMPLES ASSIM</p><h2>Informação de qualidade,<br />direto na sua caixa de entrada.</h2></div><div class="steps"><article><span>01</span><h3>Cadastre seu e-mail</h3><p>Preencha o formulário em poucos segundos.</p></article><article><span>02</span><h3>Receba semanalmente</h3><p>Todo o contexto que importa, no momento certo.</p></article><article><span>03</span><h3>Fique atualizado</h3><p>Entenda o mercado em poucos minutos.</p></article></div></section>
     </main>
-    <footer><a class="brand" href="#inicio"><span class="brand-mark">↗</span><span>Market Brief</span></a><p>© 2026 Market Brief. Feito por estudantes, para investidores.</p><div class="footer-links"><a href="https://www.instagram.com/marketbriefbrasil?stkn=MXhycXhucHJoZXMwdA%3D%3D" aria-label="Instagram">Instagram</a></div></footer>
+    <footer><a class="brand site-brand" href="#inicio"><img class="brand-mark" src="{{ url_for('static', filename='img/market-brief-icon.svg') }}" alt="" /><span>Market Brief <small>| Seu resumo diário do mercado</small></span></a><p>© 2026 Market Brief. Feito por estudantes, para investidores.</p><div class="footer-links"><a href="https://www.instagram.com/marketbriefbrasil?stkn=MXhycXhucHJoZXMwdA%3D%3D" aria-label="Instagram">Instagram</a></div></footer>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
