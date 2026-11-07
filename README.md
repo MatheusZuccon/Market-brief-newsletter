@@ -71,6 +71,8 @@ newsletter-site/
 
 O script `send_newsletter.py` busca todos os e-mails da tabela `subscribers` no Neon e envia uma mensagem individual para cada pessoa.
 
+O roteiro editorial padrão está salvo em [`PROMPT_NEWSLETTER.md`](PROMPT_NEWSLETTER.md). Ao solicitar a criação de uma nova newsletter, use esse prompt como checklist de conteúdo, fontes, riscos e revisão. A geração do conteúdo pode ser feita sob demanda nesta conversa; o envio deve continuar sendo revisado e executado separadamente.
+
 1. Ative a verificação em duas etapas na conta Gmail e crie uma **senha de app**. Não use a senha normal da sua conta.
 2. Crie ou edite o arquivo HTML da newsletter, por exemplo `newsletter-exemplo.html`. O modelo incluso aceita `{{first_name}}` para personalizar a saudação. Substitua também `https://example.com` pelo link da sua análise e `SEU_EMAIL` pelo e-mail de contato no link de descadastro.
 3. Configure as credenciais no terminal atual (PowerShell):
