@@ -2,23 +2,24 @@ from __future__ import annotations
 
 import os
 import re
-import sqlite3
-from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
+import psycopg
+from psycopg.errors import UniqueViolation
+from psycopg.rows import dict_row
 
 
-BASE_DIR = Path(__file__).resolve().parent
-DATABASE_PATH = BASE_DIR / "database.db"
 EMAIL_PATTERN = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
 app = Flask(__name__)
+db_initialized = False
 
 
-def get_db_connection() -> sqlite3.Connection:
-    connection = sqlite3.connect(DATABASE_PATH)
-    connection.row_factory = sqlite3.Row
-    return connection
+def get_db_connection() -> psycopg.Connection:
+    database_url = os.environ.get("DATABASE_URL")
+    if not database_url:
+        raise RuntimeError("A variável de ambiente DATABASE_URL não foi configurada.")
+    return psycopg.connect(database_url, row_factory=dict_row)
 
 
 def init_db() -> None:
@@ -27,7 +28,7 @@ def init_db() -> None:
         connection.execute(
             """
             CREATE TABLE IF NOT EXISTS subscribers (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id BIGSERIAL PRIMARY KEY,
                 first_name TEXT NOT NULL,
                 last_name TEXT NOT NULL,
                 email TEXT NOT NULL UNIQUE,
@@ -37,7 +38,12 @@ def init_db() -> None:
         )
 
 
-init_db()
+@app.before_request
+def ensure_db_initialized() -> None:
+    global db_initialized
+    if not db_initialized:
+        init_db()
+        db_initialized = True
 
 
 @app.get("/")
@@ -61,10 +67,10 @@ def subscribe():
     try:
         with get_db_connection() as connection:
             connection.execute(
-                "INSERT INTO subscribers (first_name, last_name, email) VALUES (?, ?, ?)",
+                "INSERT INTO subscribers (first_name, last_name, email) VALUES (%s, %s, %s)",
                 (first_name, last_name, email),
             )
-    except sqlite3.IntegrityError:
+    except UniqueViolation:
         return jsonify(success=False, message="Este e-mail já está inscrito na newsletter."), 409
 
     return jsonify(

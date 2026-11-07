@@ -1,4 +1,4 @@
-"""Send a newsletter to every subscriber saved in the local SQLite database.
+"""Send a newsletter to every subscriber saved in the Neon PostgreSQL database.
 
 By default the command only previews recipients. Add --send to actually deliver.
 Credentials must be supplied through environment variables, never hard-coded.
@@ -9,7 +9,6 @@ from __future__ import annotations
 import argparse
 import os
 import smtplib
-import sqlite3
 import sys
 import time
 from email.message import EmailMessage
@@ -17,27 +16,22 @@ from pathlib import Path
 from html import unescape
 import re
 
+import psycopg
+from psycopg.rows import dict_row
 
-BASE_DIR = Path(__file__).resolve().parent
-DATABASE_PATH = BASE_DIR / "database.db"
+
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 
 
-def get_subscribers() -> list[sqlite3.Row]:
-    if not DATABASE_PATH.exists():
-        raise FileNotFoundError(
-            "O banco database.db não foi encontrado. Execute primeiro: python app.py"
-        )
-
-    connection = sqlite3.connect(DATABASE_PATH)
-    connection.row_factory = sqlite3.Row
-    try:
+def get_subscribers() -> list[dict[str, str]]:
+    database_url = os.environ.get("DATABASE_URL")
+    if not database_url:
+        raise RuntimeError("A variável de ambiente DATABASE_URL não foi configurada.")
+    with psycopg.connect(database_url, row_factory=dict_row) as connection:
         return connection.execute(
             "SELECT first_name, last_name, email FROM subscribers ORDER BY id"
         ).fetchall()
-    finally:
-        connection.close()
 
 
 def html_to_text(html: str) -> str:
@@ -49,7 +43,7 @@ def html_to_text(html: str) -> str:
 
 
 def build_message(
-    sender: str, recipient: sqlite3.Row, subject: str, body: str, html: str | None
+    sender: str, recipient: dict[str, str], subject: str, body: str, html: str | None
 ) -> EmailMessage:
     message = EmailMessage()
     message["Subject"] = subject
