@@ -153,6 +153,6 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except (FileNotFoundError, sqlite3.Error, OSError, smtplib.SMTPException) as error:
+    except (FileNotFoundError, OSError, psycopg.Error, smtplib.SMTPException) as error:
         print(f"Erro: {error}", file=sys.stderr)
         raise SystemExit(1)
