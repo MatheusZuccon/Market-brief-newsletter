@@ -22,7 +22,11 @@
         <img class="brand-mark" src="{{ url_for('static', filename='img/market-brief-icon.svg') }}" alt="" />
         <span>Market Brief <small>| Seu resumo diário do mercado</small></span>
       </a>
-      <nav class="site-nav" aria-label="Navegação principal">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
         <a href="#sobre">Sobre nós</a>
         <a href="https://www.instagram.com/marketbriefbrasil?stkn=MXhycXhucHJoZXMwdA%3D%3D" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a class="header-link" href="#cadastro">Assinar agora <span>→</span></a>
